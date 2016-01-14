@@ -23,14 +23,35 @@ angular.module('starter', ['ionic'])
   });
 })
 
+.controller('HomeCtrl', function($scope, $ionicLoading, $state){
+  $scope.search = function(city) {
+    $state.go('weather', {city: city})
+  }
+})
+
+.controller('WeatherCtrl', function($scope, $ionicLoading, $stateParams, $http){
+  url = 'http://api.openweathermap.org/data/2.5/forecast/daily?q=' + $stateParams.city + '&mode=json&units=metric&cnt=7&APPID=c288de449082349c110bdbd8e8b621da';
+  $ionicLoading.show({template: 'Chargement...'});
+  $http.get(url).success(function(response) {
+      $ionicLoading.hide();
+      $scope.weather = response;
+  })
+})
+
 .config(function($stateProvider, $urlRouterProvider){
   $stateProvider.state('home', {
     url: '/home',
-    templateUrl: 'templates/home.html'
+    templateUrl: 'templates/home.html',
+    controller: 'HomeCtrl'
   });
   $stateProvider.state('about', {
     url: '/about',
     templateUrl: 'templates/about.html'
+  });
+  $stateProvider.state('weather', {
+    url: '/weather/:city',
+    templateUrl: 'templates/weather.html',
+    controller: 'WeatherCtrl'
   });
 
   $urlRouterProvider.otherwise('/home');
