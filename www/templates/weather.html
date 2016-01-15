@@ -1,6 +1,6 @@
-<ion-view view-title='Météo {{weather.city.name}}/{{weather.city.country}}'>
+<ion-view ng-controller='WeatherCtrl' view-title='Météo {{weather.city.name}}/{{weather.city.country}}'>
 	<ion-content>
-		<ion-list class='card' ng-controller='WeatherCtrl'>
+		<ion-list class='card'>
 			<ion-item class='item item-text-wrap' ng-repeat='day in weather.list'>
 				{{day.dt*1000 | date: 'EEEE'}}
 				{{day.dt*1000 | date: 'dd/MM'}}
