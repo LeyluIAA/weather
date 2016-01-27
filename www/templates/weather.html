@@ -1,16 +1,25 @@
-<ion-view ng-controller='WeatherCtrl' view-title='Météo {{weather.city.name}}/{{weather.city.country}}'>
+<ion-view class='bar-royal' view-title='Météo {{weather.city.name}}/{{weather.city.country}}'>
 	<ion-content>
-		<ion-list class='card'>
-			<ion-item class='item item-text-wrap' ng-repeat='day in weather.list'>
+		<div class='card'>
+			<div class='item item-text-wrap' ng-repeat='day in weather.list'>
 				{{day.dt*1000 | date: 'EEEE'}}
 				{{day.dt*1000 | date: 'dd/MM'}}
 				<br/>
 				temperature
 				{{day.temp.day}} °C
 				<br/>
-				<i class='icon-{{day.weather[0].main.toLowerCase()}}'></i><br/>
+				<i class='icon-{{day.weather[0].main.toLowerCase()}}'></i><br/>{{day.weather[0].main.toLowerCase()}}
+                <i class='ion-social-python'></i>
+                {{day.weather[0].main.toLowerCase()}}
+                <div ng-switch="{{day.weather[0].main.toLowerCase()}}">
+                    {{day.weather[0].main.toLowerCase()}}
+                    <div ng-switch-when="rain">coucou?</div>re
+                    <div ng-switch-when="clear">areuh</div>re
+                    <div ng-switch-default>default</div>re
+                </div>
+				<i class='icon-sun'></i><br/>
 				{{day.weather[0].description}}
-			</ion-item>
-		</ion-list>
+			</div>
+		</div>
 	</ion-content>
 </ion-view>
