@@ -8,15 +8,14 @@
 				temperature
 				{{day.temp.day}} °C
 				<br/>
-				<i class='icon-{{day.weather[0].main.toLowerCase()}}'></i><br/>{{day.weather[0].main.toLowerCase()}}
+				<i class='icon-{{day.weather[0].main.toLowerCase()}}'></i><br/>
                 <i class='ion-social-python'></i>
                 {{day.weather[0].main.toLowerCase()}}
-                <div ng-switch="{{day.weather[0].main.toLowerCase()}}">
-                    {{day.weather[0].main.toLowerCase()}}
-                    <div ng-switch-when="rain">coucou?</div>re
-                    <div ng-switch-when="clear">areuh</div>re
-                    <div ng-switch-default>default</div>re
-                </div>
+                <!--<div ng-switch="{{day.weather[0].main.toLowerCase()}}">-->
+                    <div ng-show=" {{day.weather[0].main.toLowerCase()}}=='rain'">coucou?</div>re
+                    <!--<div ng-switch-when="clear">areuh</div>re
+                    <div ng-switch-default>default</div>re-->
+                <!--</div>-->
 				<i class='icon-sun'></i><br/>
 				{{day.weather[0].description}}
 			</div>

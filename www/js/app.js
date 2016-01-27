@@ -35,6 +35,7 @@ angular.module('starter', ['ionic'])
   $http.get(url).success(function(response) {
       $ionicLoading.hide();
       $scope.weather = response;
+      console.log('weather ?', $scope.weather);
   })
 })
 
