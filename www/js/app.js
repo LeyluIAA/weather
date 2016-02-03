@@ -25,18 +25,42 @@ angular.module('starter', ['ionic'])
 
 .controller('HomeCtrl', function($scope, $ionicLoading, $state){
   $scope.search = function(city) {
-    $state.go('weather', {city: city})
+    $state.go('weather', {city: city});
   }
 })
 
 .controller('WeatherCtrl', function($scope, $ionicLoading, $stateParams, $http){
   url = 'http://api.openweathermap.org/data/2.5/forecast/daily?q=' + $stateParams.city + '&mode=json&units=metric&cnt=7&APPID=c288de449082349c110bdbd8e8b621da';
   $ionicLoading.show({template: 'Chargement...'});
+  var name = 'temperatures';
+  var humidity = 'humidity';
+  var tab = [];
+  var tab2 = [];
   $http.get(url).success(function(response) {
       $ionicLoading.hide();
       $scope.weather = response;
       console.log('weather ?', $scope.weather);
-  })
+      tab.push(name);
+      tab2.push(humidity);
+      var list = $scope.weather.list;
+      for (var i = 0; i < list.length; i++) {
+        tab.push(list[i].temp.day);
+        tab2.push(list[i].humidity);
+      }
+      var chart = c3.generate({
+        bindto: '#chart',
+        data: {
+          columns: [
+            tab,
+            tab2
+          ],
+          types: {
+            temperatures: 'area',
+            humidity: 'area'
+          }
+        }
+      });
+  });
 })
 
 .config(function($stateProvider, $urlRouterProvider){
