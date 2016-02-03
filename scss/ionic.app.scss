@@ -15,7 +15,8 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
-$positive: #ed7b1d;
+$positive: #FA6E69 !default;
+$oronge: #FFCE74 !default;
 
 
 // The path for our ionicons font files, relative to the built CSS in www/css
@@ -27,5 +28,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 .icon-sun {
   background-image: url('../www/img/SVG/1.svg');
   background-repeat: no-repeat;
+}
+
+.oronge {
+	background-color: #FFCE74;
 }
 
