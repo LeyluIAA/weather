@@ -57,7 +57,16 @@ angular.module('starter', ['ionic'])
           types: {
             temperatures: 'area',
             humidity: 'area'
+          },
+          axes: {
+              temperatures: 'y',
+              humidity: 'y2'
           }
+        },
+        axis: {
+            y2: {
+                show: true
+            }
         }
       });
   });

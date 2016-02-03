@@ -7,16 +7,15 @@
 			</div>
 			<div class='row'>
 				<div class='col'>
-					temperature
+					Temperature
 					{{day.temp.day}} °C
 				</div>
-	            <!--<div ng-switch="{{day.weather[0].main.toLowerCase()}}">-->
-	                <!--<div ng-switch-when="clear">areuh</div>re
-	                <div ng-switch-default>default</div>re-->
-	            <!--</div>-->
 	            <div class='col'>
 					{{day.weather[0].description}}
 				</div>
+                <div class='col'>
+                    Humidity {{day.humidity}} %
+                </div>
 			</div>
 		</div>
 		<div class="card">
